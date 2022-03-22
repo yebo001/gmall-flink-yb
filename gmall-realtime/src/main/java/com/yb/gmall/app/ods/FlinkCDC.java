@@ -32,7 +32,7 @@ public class FlinkCDC {
                 .port(3306)
                 .username("root")
                 .password("123456")
-                .databaseList("gmall-2021")
+                .databaseList("gmall2021")
                 .deserializer(new CustomerDeserialization())
                 .startupOptions(StartupOptions.latest())
                 .build();
