@@ -3,7 +3,9 @@ package com.yb.gmall.utils;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
+import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 
 import java.util.Properties;
 
@@ -16,6 +18,15 @@ public class MyKafkaUtil {
         return new FlinkKafkaProducer<String>(brokers,
                 topic,
                 new SimpleStringSchema());
+    }
+
+    public static <T> FlinkKafkaProducer<T> getKafkaProducer(KafkaSerializationSchema<T> kafkaSerializationSchema) {
+        Properties properties = new Properties();
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokers);
+        return new FlinkKafkaProducer<T>(default_topic,
+                kafkaSerializationSchema,
+                properties,
+                FlinkKafkaProducer.Semantic.EXACTLY_ONCE);
     }
 
     public static FlinkKafkaConsumer<String> getKafkaConsumer(String topic, String groupId) {
