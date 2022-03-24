@@ -50,7 +50,7 @@ public class DimSinkFunction extends RichSinkFunction<JSONObject> {
             System.out.println(upsertSql);
 
             //预编译SQL
-            connection.prepareStatement(upsertSql);
+            preparedStatement = connection.prepareStatement(upsertSql);
 
             //判断如果当前数据为更新操作,则先删除Redis中的数据
             if ("update".equals(value.getString("type"))) {

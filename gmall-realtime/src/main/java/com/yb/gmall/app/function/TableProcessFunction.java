@@ -156,7 +156,7 @@ public class TableProcessFunction extends BroadcastProcessFunction<JSONObject,St
             System.out.println(createTableSQL);
 
             //预编译SQL
-            connection.prepareStatement(createTableSQL.toString());
+            preparedStatement = connection.prepareStatement(createTableSQL.toString());
 
             //执行
             preparedStatement.execute();

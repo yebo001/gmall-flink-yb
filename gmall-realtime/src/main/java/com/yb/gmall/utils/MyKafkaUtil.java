@@ -26,7 +26,8 @@ public class MyKafkaUtil {
         return new FlinkKafkaProducer<T>(default_topic,
                 kafkaSerializationSchema,
                 properties,
-                FlinkKafkaProducer.Semantic.EXACTLY_ONCE);
+                FlinkKafkaProducer.Semantic.EXACTLY_ONCE
+        );
     }
 
     public static FlinkKafkaConsumer<String> getKafkaConsumer(String topic, String groupId) {
