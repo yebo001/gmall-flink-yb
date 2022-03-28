@@ -24,7 +24,7 @@ import org.apache.flink.util.OutputTag;
  *   1.logger.sh start
  *   2.java -jar gmall2020-mock-log-2020-12-18.jar
  *   3.BaseLogApp
- *   4.kafka-console-consumer.sh --list --zookeeper hadoop102:2181/kafka
+ *   4.kafka-topics.sh --list --zookeeper hadoop102:2181/kafka
  */
 //数据流：web/app -> Nginx -> SpringBoot -> Kafka(ods) -> FlinkApp -> Kafka(dwd)
 //程  序：mockLog -> Nginx -> Logger.sh  -> Kafka(ZK)  -> BaseLogApp -> kafka

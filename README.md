@@ -10,6 +10,9 @@ kafka-topics.sh --list --bootstrap-server hadoop102:9092
 kafka消费数据
 kafka-console-consumer.sh --topic dwd_display_log --bootstrap-server hadoop102:9092 --from-beginning
 
+kafka生产者
+kafka-console-producer.sh --broker-list hadoop102:9092 --topic dwd_page_log
+
 行为数据生成
 java -jar gmall2020-mock-log-2020-12-18.jar
 
